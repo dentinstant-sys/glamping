@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --port ${PORT:-8080} --host 0.0.0.0"
   },
   "dependencies": {
     "firebase": "^11.3.0",

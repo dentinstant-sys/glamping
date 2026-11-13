@@ -48,10 +48,9 @@ export default function Header({ heroOscuro = false }: { heroOscuro?: boolean })
           }`}
           aria-label="Alma Verde — inicio"
         >
-          <PinoMarca
-            className="h-6 w-8"
-            style={{ color: sobreHero ? '#8ce0c3' : 'var(--color-oro)' }}
-          />
+        <PinoMarca
+  className={`h-6 w-8 ${sobreHero ? 'text-[#8ce0c3]' : 'text-oro'}`}
+/>
           <span className="font-display text-[19px] tracking-[0.22em]">ALMA VERDE</span>
         </Link>
 
