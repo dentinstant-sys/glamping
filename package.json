@@ -8,14 +8,16 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "lint": "eslint .",
-    "preview": "vite preview --port ${PORT:-8080} --host 0.0.0.0"
+   "preview": "vite preview --port ${PORT:-8080} --host 0.0.0.0",
+    "start": "npx serve dist -s -l ${PORT:-8080}"
   },
   "dependencies": {
     "firebase": "^11.3.0",
     "react": "^19.0.0",
     "react-day-picker": "^9.14.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.1.0"
+    "react-router-dom": "^7.1.0",
+    "serve": "^14.2.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.18.0",
