@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- SEO base -->
+    <title>Alma Verde · Lujo y naturaleza bajo las estrellas</title>
+    <meta
+      name="description"
+      content="Glamping de lujo en domos geodésicos en cinco sedes de Colombia. Conecta, descansa, vive, recuerda."
+    />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- canonical + og:url los inyecta vite.config.ts desde VITE_SITIO_URL.
+         Sin esa variable no se emiten: mejor ninguno que uno equivocado. -->
+    <!--SEO_URL-->
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content="Alma Verde" />
+    <meta property="og:title" content="Alma Verde · Lujo y naturaleza bajo las estrellas" />
+    <meta
+      property="og:description"
+      content="Glamping de lujo en domos geodésicos en cinco sedes de Colombia."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Tipografías: Cormorant Garamond (display) + Hanken Grotesk (cuerpo)
+         + IBM Plex Mono (datos y etiquetas: números de sede, departamentos,
+         índices). El rol "mono" es lo que aleja el diseño del look de plantilla.
+
+         Solo los pesos que el CSS usa de verdad: 400 y 500 de cada familia.
+         Cormorant 600 y Hanken 300/600 se cargaban sin que ninguna regla los
+         pidiera (verificado con grep de font-weight y de utilidades). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Hanken+Grotesk:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

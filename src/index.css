@@ -1,0 +1,330 @@
+@import "tailwindcss";
+
+/* ============================================================
+   ALMA VERDE · sitio público · identidad "Verde Menta" · tema HOTEL
+
+   Dirección: página de hotel. El huésped llega a ver habitaciones,
+   precios y ubicación, y a reservar. La información manda sobre la atmósfera.
+   ============================================================ */
+@theme {
+  /* — Lienzo — */
+  --color-fondo: #ffffff;
+  --color-fondo-2: #f4f8f6; /* banda alterna · neutro fresco y suave */
+  --color-fondo-3: #e8f2ee;
+  --color-card: #ffffff;
+  --color-card-2: #f4f8f6;
+
+  /* — Verde Menta (Reemplaza al champaña/oro) — */
+  --color-oro: #2e8b6e; /* Verde menta profundo / principal para bordes, iconos y botones */
+  --color-oro-texto: #1e6650; /* Verde oscuro para titulares y enlaces con alto contraste */
+  --color-oro-claro: #8ce0c3; /* Verde menta claro · solo para rellenos y superficies grandes */
+  --color-oro-profundo: #134233;
+
+  /* — Tinta — */
+  --color-tinta: #141c18; /* 18.6:1 */
+  --color-tinta-2: #4a5c53; /* 7.2:1 */
+  --color-tinta-3: #7e9488; /* terciario / deshabilitado */
+
+  /* — Verde bosque · el diferenciador — */
+  --color-bosque: #1b2e25;
+  --color-bosque-2: #243d31; /* superficie elevada sobre bosque */
+  --color-linea-bosque: rgba(255, 255, 255, 0.16);
+
+  --color-sello: #122119; /* pie: verde bosque profundo */
+  --color-musgo: #4a6655;
+  --color-fuego: #a8552c;
+
+  /* — Estado — */
+  --color-ok: #2f6b4d;
+  --color-warn: #8a6410;
+  --color-bad: #a33a2c;
+  --color-info: #2f5f8a;
+
+  /* — Líneas — */
+  --color-linea: rgba(20, 28, 24, 0.12);
+  --color-linea-2: rgba(20, 28, 24, 0.22);
+  --color-linea-3: rgba(46, 139, 110, 0.55);
+
+  /* — Tipografía — */
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "Hanken Grotesk", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", monospace;
+
+  --radius-suave: 10px;
+  --radius-control: 8px;
+  --radius-pill: 999px;
+
+  --shadow-sh-1: 0 1px 2px rgba(20, 28, 24, 0.06);
+  --shadow-sh-2: 0 8px 24px -12px rgba(20, 28, 24, 0.18);
+  --shadow-sh-3: 0 20px 50px -24px rgba(20, 28, 24, 0.26);
+  --shadow-sh-oro: 0 8px 24px -10px rgba(46, 139, 110, 0.35);
+
+  --spacing-blk: clamp(64px, 8vw, 110px);
+  --ease-royal: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --h-subnav: 56px;
+}
+
+/* ===== Base ===== */
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--color-fondo);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: transparent;
+  color: var(--color-tinta);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-oro);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--h-subnav) + 16px);
+}
+
+@media (pointer: coarse) {
+  a,
+  button,
+  select,
+  input[type="date"] {
+    min-height: 44px;
+  }
+}
+
+a,
+button,
+select,
+input,
+label {
+  touch-action: manipulation;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  .dato {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-tinta-2);
+    font-weight: 500;
+  }
+  .dato-oro {
+    color: var(--color-oro-texto);
+  }
+
+  .numeral {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+    font-weight: 500;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-oro-texto);
+    font-weight: 500;
+  }
+
+  .esk {
+    background: linear-gradient(
+      90deg,
+      var(--color-fondo-2) 25%,
+      var(--color-fondo-3) 50%,
+      var(--color-fondo-2) 75%
+    );
+    background-size: 200% 100%;
+    animation: esk 1.5s var(--ease-royal) infinite;
+    border-radius: var(--radius-suave);
+  }
+
+  .skyfx {
+    display: none;
+  }
+
+  .seccion-alt {
+    background: var(--color-fondo-2);
+  }
+
+  .seccion-bosque {
+    background: linear-gradient(180deg, #1c3328 0%, var(--color-bosque) 100%);
+  }
+
+  .grad-noche {
+    background: linear-gradient(180deg, #1f2b24 0%, #141c18 100%);
+  }
+
+  .regla {
+    border-top: 1px solid var(--color-linea);
+  }
+
+  .riel {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+  .riel::-webkit-scrollbar {
+    display: none;
+  }
+  .riel > * {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+  }
+
+  .ficha {
+    background: var(--color-card);
+    border: 1px solid var(--color-linea);
+    border-radius: var(--radius-suave);
+    overflow: hidden;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.25s;
+  }
+  .ficha:hover {
+    border-color: var(--color-linea-3);
+    box-shadow: var(--shadow-sh-2);
+  }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: kb 24s infinite;
+  }
+  .hero-slide-2 {
+    animation-delay: 8s;
+  }
+  .hero-slide-3 {
+    animation-delay: 16s;
+  }
+
+  .rv {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.6s var(--ease-royal),
+      transform 0.6s var(--ease-royal);
+  }
+  .rv.in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes esk {
+  0% {
+    background-position: 180% 0;
+  }
+  100% {
+    background-position: -180% 0;
+  }
+}
+
+@keyframes twf {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes kb {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  6% {
+    opacity: 1;
+  }
+  28% {
+    opacity: 1;
+  }
+  36% {
+    opacity: 0;
+    transform: scale(1.12);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rv {
+    opacity: 1;
+    transform: none;
+  }
+  .hero-slide {
+    animation: none !important;
+  }
+  .hero-slide-1 {
+    opacity: 1 !important;
+  }
+}
+
+/* ===== Calendario de disponibilidad (react-day-picker v9) ===== */
+.rdp-root {
+  --rdp-accent-color: #2e8b6e;
+  --rdp-accent-background-color: #f4f8f6;
+  --rdp-today-color: #1e6650;
+  --rdp-disabled-opacity: 0.35;
+  --rdp-font-family: inherit;
+  margin: 0 auto;
+}

@@ -1,0 +1,8 @@
+# Royal Glamping · glampingroyal.com
+# Sitio público: todo indexable. El panel admin vive en otro hosting.
+
+User-agent: *
+Allow: /
+
+# Rutas de máquina, sin valor para el índice.
+Disallow: /mi-reserva
