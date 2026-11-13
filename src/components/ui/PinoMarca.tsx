@@ -9,7 +9,15 @@
  *  - En móvil se oculta desde el sitio de uso (hidden sm:block): a ese ancho
  *    es ruido, no atmósfera.
  */
-export default function PinoMarca({ className = '' }: { className?: string }) {
+import type { CSSProperties } from 'react';
+
+export default function PinoMarca({
+  className = '',
+  style,
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) {
   return (
     <svg
       viewBox="0 0 240 160"
@@ -19,6 +27,7 @@ export default function PinoMarca({ className = '' }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
       className={`pointer-events-none select-none ${className}`}
+      style={style}
       aria-hidden="true"
     >
       {/* Pino central, el protagonista */}
